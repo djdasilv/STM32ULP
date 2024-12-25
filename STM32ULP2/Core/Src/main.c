@@ -86,7 +86,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	uint8_t MSG[46] = {'\0'};
+	char MSG[46] = {'\0'};
 
   /* USER CODE END 1 */
 
@@ -125,8 +125,8 @@ int main(void)
 	  HAL_UART_Init(&huart2);
 
 	  //Print value stored in backup register to serial port
-	  sprintf(MSG,"Value in backup register 7 is: %d \r\n",HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR7));
-	  HAL_UART_Transmit(&huart2, MSG, sizeof(MSG), HAL_MAX_DELAY);
+	  sprintf(MSG,"Value in backup register 7 is: %lu \r\n", HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR7));
+	  HAL_UART_Transmit(&huart2, MSG, sizeof(MSG),HAL_MAX_DELAY);
 
 	  //Enter STOP mode
 	  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
